@@ -28,7 +28,7 @@ public class MainAct extends Activity {
         Cursor c = helper.getAll();
         c.moveToFirst();
         
-        MyAdapter adapter = new MyAdapter(this, c);
+        MyAdapter adapter = new MyAdapter(this, c, false);
         listView.setAdapter(adapter);
     }
 }

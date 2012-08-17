@@ -15,16 +15,14 @@ import android.widget.TextView;
 
 public class MyAdapter extends CursorAdapter{
 
-	Cursor c;
 	LayoutInflater inflater;
 	Context context;
 	private String TAG = getClass().getSimpleName();
 	Helper helper;
 	
-	public MyAdapter(Context context, Cursor c) {
-		super(context, c);
+	public MyAdapter(Context context, Cursor c, boolean autoRequery) {
+		super(context, c, autoRequery);
 		
-		this.c = c;
 		this.context = context;
 		inflater = LayoutInflater.from(context);
 		helper = new Helper(context);
@@ -52,7 +50,7 @@ public class MyAdapter extends CursorAdapter{
 					
 					public void onClick(DialogInterface dialog, int which) {
 						helper.delete(dataId);
-						c.requery();
+						cursor.requery();
 						notifyDataSetChanged();
 					}
 				});
